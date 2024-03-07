@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  backend-chatbot:
+    container_name: backend-chatbot
+    build:
+      context: ../Ailyze_openai_dajngo/AILYZE/
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+    depends_on:
+      - db
+    networks:
+      ailyze-nw:
+    volumes:
+      - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
+    env_file:
+      - ./.env
+    command: sh -c "ls && python AILYZE/manage.py migrate && python AILYZE/manage.py runserver 0.0.0.0:8000"

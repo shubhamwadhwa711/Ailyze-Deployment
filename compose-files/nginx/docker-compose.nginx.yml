@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./compose-files/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ../../Ailyze_openai_dajngo/AILYZE/staticfiles:/app/static:ro
+    environment:
+      AILYZE_HOST: "xyz.weuselinux.com"
+    depends_on:
+      - backend-chatbot
+      - frontend
+    env_file:
+      - ./.env
+    networks:
+      ailyze-nw:
