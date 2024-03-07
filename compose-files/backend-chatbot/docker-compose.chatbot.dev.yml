@@ -19,4 +19,4 @@ services:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
       - ./.env
-    command: sh -c "ls && python AILYZE/manage.py migrate && python AILYZE/manage.py runserver 0.0.0.0:8000"
+    command: sh -c "ls && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
