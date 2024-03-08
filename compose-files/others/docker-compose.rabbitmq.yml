@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"  # RabbitMQ main port
+      - "15672:15672"  # RabbitMQ management plugin port
+    environment:
+      - RABBITMQ_DEFAULT_USER=staginguser
+      - RABBITMQ_DEFAULT_PASS=stagingpassword
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    env_file:
+      - ./.env
+    networks:
+      ailyze-nw:
+
+volumes:
+  rabbitmq_data:
