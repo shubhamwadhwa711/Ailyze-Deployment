@@ -20,7 +20,7 @@ services:
     command: celery  -A my_backend worker -l info
     depends_on:
       - redis
-      - backend
+      - backend-oneclickinsight
     networks:
       ailyze-nw:
   
