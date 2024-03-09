@@ -5,7 +5,7 @@ services:
     build:
       context: ../Ailyze_openai_dajngo/AILYZE/
     ports:
-      - "8000:8000"
+      - "8001:8001"
     environment:
       DB_HOST: db 
       DB_USER: postgres
@@ -18,9 +18,8 @@ services:
     networks:
       ailyze-nw:
     volumes:
-    #Resolve this
-      - ../../Ailyze_openai_dajngo/AILYZE:/AILYZE
+      - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
       - ./.env
-    command: sh -c "ls &&  python manage.py migrate && daphne -u AILYZE -p 8001"
+    command: sh -c "ls AILYZE &&  python manage.py migrate && daphne AILYZE.asgi:application -p 8001"
     

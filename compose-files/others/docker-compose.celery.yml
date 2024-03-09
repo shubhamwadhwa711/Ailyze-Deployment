@@ -17,7 +17,7 @@ services:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
       - ./.env
-    command: celery  -A my_backend worker -l info
+    command: celery  -A AILYZE worker -l info
     depends_on:
       - redis
       - backend-oneclickinsight
@@ -40,7 +40,7 @@ services:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
       - ./.env
-    command: celery -A my_backend beat -l info
+    command: celery -A AILYZE beat -l info
     depends_on:
       - redis
       - backend-oneclickinsight
