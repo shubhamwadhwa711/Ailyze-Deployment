@@ -14,5 +14,5 @@ services:
       ailyze-nw:
     stdin_open: true
     volumes:
-      - ../ailyze-nextjs:/ailyze-nextjs
-    command: npm run dev
+      - ../ailyze-nextjs:/app
+    command: sh -c "ls && pm2 startup && pm2 monitor"

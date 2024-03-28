@@ -5,8 +5,10 @@ services:
     container_name: nginx
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./compose-files/nginx/conf/default.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt
       - ../../Ailyze_openai_dajngo/AILYZE/staticfiles:/app/static:ro
     environment:
       AILYZE_HOST: "xyz.weuselinux.com"
