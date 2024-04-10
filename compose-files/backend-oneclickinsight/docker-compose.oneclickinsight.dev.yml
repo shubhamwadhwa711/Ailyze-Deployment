@@ -13,8 +13,6 @@ services:
       DB_NAME: postgres
       CELERY_RESULT_BACKEND: "redis://redis:6379/0"
       CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-    depends_on:
-      - db
     networks:
       ailyze-nw:
     volumes:
