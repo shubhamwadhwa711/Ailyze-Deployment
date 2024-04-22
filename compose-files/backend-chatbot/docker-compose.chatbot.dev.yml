@@ -19,4 +19,4 @@ services:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
       - ./.env
-    command: sh -c "ls && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "ls && gunicorn --bind 0.0.0.0:8000 --timeout 300 --access-logfile - --error-logfile - AILYZE.wsgi"
