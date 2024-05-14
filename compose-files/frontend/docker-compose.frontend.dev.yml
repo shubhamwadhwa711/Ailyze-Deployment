@@ -3,16 +3,17 @@ services:
   frontend:
     container_name: frontend
     build:
+      dockerfile: Dockerfile
       context: ../ailyze-nextjs
+    image: ailyzeregistery.azurecr.io/ailyze-frontend:${FRONTENDTAG}
     ports:
       - "3020:3020"
     environment:
-      - "REACT_APP_BASE_URL=https://xyz.weuselinux.com/api"
-      - "REACT_APP_PUBLIC_URL=http://localhost:3020"
-      - "REACT_APP_API_URL=https://xyz.weuselinux.com"
+      REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
+      REACT_APP_PUBLIC_URL: ${REACT_APP_BASE_URL} 
+      REACT_APP_API_URL: ${REACT_APP_BASE_URL}
     networks:
       ailyze-nw:
     stdin_open: true
     volumes:
       - ../ailyze-nextjs:/app
-    command: sh -c "ls && pm2 startup && pm2 monitor"

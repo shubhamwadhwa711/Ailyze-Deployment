@@ -13,7 +13,7 @@ services:
     environment:
       AILYZE_HOST: "xyz.weuselinux.com"
     depends_on:
-      - backend-chatbot
+      - backend-oneclickinsight
       - frontend
     env_file:
       - ./.env

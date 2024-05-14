@@ -1,19 +1,16 @@
 version: "3.8"
 services:
   celery-1:
-    image: celery
     container_name: celery-1
     restart: always
-    build:
-      context: ../Ailyze_openai_dajngo/AILYZE/
-      dockerfile: Dockerfile
+    image: ailyzeregistery.azurecr.io/ailyze-backend:${BACKENDTAG}-latest
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
     volumes:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
@@ -26,19 +23,16 @@ services:
       ailyze-nw:
 
   celery-2:
-    image: celery
+    image: ailyzeregistery.azurecr.io/ailyze-backend:${BACKENDTAG}-latest
     container_name: celery-2
     restart: always
-    build:
-      context: ../Ailyze_openai_dajngo/AILYZE/
-      dockerfile: Dockerfile
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
     volumes:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
@@ -52,19 +46,16 @@ services:
       ailyze-nw:
 
   celery-3:
-    image: celery
+    image: ailyzeregistery.azurecr.io/ailyze-backend:${BACKENDTAG}-latest
     container_name: celery-3
     restart: always
-    build:
-      context: ../Ailyze_openai_dajngo/AILYZE/
-      dockerfile: Dockerfile
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
     volumes:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
@@ -79,19 +70,16 @@ services:
       
 
   celery-4:
-    image: celery
+    image: ailyzeregistery.azurecr.io/ailyze-backend:${BACKENDTAG}-latest
     container_name: celery-4
     restart: always
-    build:
-      context: ../Ailyze_openai_dajngo/AILYZE/
-      dockerfile: Dockerfile
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
     volumes:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:
@@ -111,12 +99,12 @@ services:
       context: ../Ailyze_openai_dajngo/AILYZE/
       dockerfile: Dockerfile
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
     volumes:
       - ../Ailyze_openai_dajngo/AILYZE:/AILYZE
     env_file:

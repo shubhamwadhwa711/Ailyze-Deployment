@@ -2,17 +2,51 @@ version: "3.8"
 services:
   backend-chatbot:
     container_name: backend-chatbot
-    build:
-      context: ../Ailyze_openai_dajngo/AILYZE/
+    image: ailyzeregistery.azurecr.io/ailyze-backend:${BACKENDTAG}-dev
     ports:
       - "8000:8000"
     environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-      CELERY_BROKER_URL: "amqp://staginguser:stagingpassword@rabbitmq:5672//"
+      #Database configuration
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+      #Celery configuration
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      #OpenAI Keys
+      OPENAI_SECRET_KEY_0: ${OPENAI_SECRET_KEY_0}
+      OPENAI_SECRET_KEY_1: ${OPENAI_SECRET_KEY_1}
+      OPENAI_SECRET_KEY_2: ${OPENAI_SECRET_KEY_2}
+      OPENAI_SECRET_KEY_3: ${OPENAI_SECRET_KEY_3}
+      #RabbitMQ Config
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      #Channel Configuration
+      channel_layer: ${channel_layer}
+      #Email Configuration
+      EMAIL_USE_TLS: ${EMAIL_USE_TLS}
+      EMAIL_HOST: ${EMAIL_HOST}
+      EMAIL_PORT: ${EMAIL_PORT}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      #System Configuration
+      SECRET_KEY: ${SECRET_KEY}
+      ENVIRONMENT: ${ENVIRONMENT}
+      DEBUG: ${DEBUG}
+      #Stripe Configuration
+      STRIPE_LIVE_SECRET_KEY: ${STRIPE_LIVE_SECRET_KEY}
+      STRIPE_TEST_SECRET_KEY: ${STRIPE_TEST_SECRET_KEY}
+      STRIPE_LIVE_PUBLIC_KEY: ${STRIPE_LIVE_PUBLIC_KEY}
+      STRIPE_TEST_PUBLIC_KEY: ${STRIPE_TEST_PUBLIC_KEY}
+      STRIPE_TEST_PRICE_KEY: ${STRIPE_TEST_PRICE_KEY}
+      STRIPE_LIVE_PRICE_KEY: ${STRIPE_LIVE_PRICE_KEY}
+      #DropBOX Configuration
+      DROPBOX_APP_KEY: ${DROPBOX_APP_KEY}
+      DROPBOX_APP_SECRET: ${DROPBOX_APP_SECRET}
+      DROPBOX_OAUTH2_TOKEN: ${DROPBOX_OAUTH2_TOKEN}
+      DROPBOX_OAUTH2_REFRESH_TOKEN: ${DROPBOX_OAUTH2_REFRESH_TOKEN}
     networks:
       ailyze-nw:
     volumes:

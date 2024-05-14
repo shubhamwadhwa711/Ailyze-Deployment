@@ -1,5 +1,9 @@
 SECRET_KEY=""
+
 ENVIRONMENT=""
+BACKEND=""
+FRONTEND=""
+NGINX=""
 
 DEBUG=""
 
